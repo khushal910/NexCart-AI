@@ -1,85 +1,183 @@
-<div align="center">
-  <h1><img src="https://gocart-gs.vercel.app/favicon.ico" width="20" height="20" alt="GoCart Favicon">
-   GoCart</h1>
-  <p>
-    An open-source multi-vendor e-commerce platform built with Next.js and Tailwind CSS.
-  </p>
-  <p>
-    <a href="https://github.com/GreatStackDev/goCart/blob/main/LICENSE.md"><img src="https://img.shields.io/github/license/GreatStackDev/goCart?style=for-the-badge" alt="License"></a>
-    <a href="https://github.com/GreatStackDev/goCart/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge" alt="PRs Welcome"></a>
-    <a href="https://github.com/GreatStackDev/goCart/issues"><img src="https://img.shields.io/github/issues/GreatStackDev/goCart?style=for-the-badge" alt="GitHub issues"></a>
-  </p>
-</div>
+# NexCart AI 🚀
+
+NexCart AI is an AI-enhanced multi-vendor e-commerce platform built by extending the open-source GoCart project.
+
+The project integrates an intelligent AI shopping assistant directly into product pages, allowing users to ask contextual questions about products, reviews, ratings, and recommendations in natural language.
+
+## 🔥 What I Built
+
+I forked the original GoCart project and implemented:
+
+- AI-powered product chat assistant
+- Context-aware product Q&A
+- Review and rating summarization
+- Natural language shopping guidance
+- LangChain + Mistral AI integration
+- FastAPI backend for AI communication
+
+The assistant can answer questions like:
+
+- "Is this product good?"
+- "What are the best reviews?"
+- "What are the drawbacks?"
+- "Is this worth buying?"
+- "Summarize customer feedback"
 
 ---
 
-## 📖 Table of Contents
+# 🧠 AI Architecture
 
-- [✨ Features](#-features)
-- [🛠️ Tech Stack](#-tech-stack)
-- [🚀 Getting Started](#-getting-started)
-- [🤝 Contributing](#-contributing)
-- [📜 License](#-license)
+## Current AI Flow
+
+```text
+User Question
+      ↓
+Frontend Chat UI
+      ↓
+FastAPI Backend
+      ↓
+LangChain Prompt Pipeline
+      ↓
+Mistral AI
+      ↓
+AI Response
+```
+
+The backend sends:
+
+- Product information
+- Ratings
+- Reviews
+- User query
+
+directly to the LLM as structured context.
 
 ---
 
-## Features
+# ❓ Why I Did NOT Use RAG / Embeddings / Vector Database
 
-- **Multi-Vendor Architecture:** Allows multiple vendors to register, manage their own products, and sell on a single platform.
-- **Customer-Facing Storefront:** A beautiful and responsive user interface for customers to browse and purchase products.
-- **Vendor Dashboards:** Dedicated dashboards for vendors to manage products, view sales analytics, and track orders.
-- **Admin Panel:** A comprehensive dashboard for platform administrators to oversee vendors, products, and commissions.
+This project currently focuses on **single-product conversational assistance**.
 
-## 🛠️ Tech Stack <a name="-tech-stack"></a>
+Because product data is already:
+- small
+- structured
+- immediately available
+- within LLM context limits
 
-- **Framework:** Next.js
-- **Styling:** Tailwind CSS
-- **UI Components:** Lucide React for icons
-- **State Management:** Redux Toolkit
+using:
+- embeddings
+- chunking
+- vector databases
 
-## 🚀 Getting Started <a name="-getting-started"></a>
+would introduce unnecessary complexity and latency.
 
-First, install the dependencies. We recommend using `npm` for this project.
+Instead, the system directly injects product JSON into the prompt, which provides:
+- lower latency
+- simpler architecture
+- easier debugging
+- reduced infrastructure overhead
+- faster development iteration
+
+This is a deliberate engineering decision based on the current problem scope.
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+- Next.js
+- React
+- Tailwind CSS
+
+## Backend
+- FastAPI
+- Python
+- LangChain
+
+## AI
+- Mistral AI
+- Prompt Engineering
+
+---
+
+# 🚀 Future Improvements
+
+Planned future upgrades include:
+
+- Conversation memory
+- Streaming AI responses
+- Semantic product search
+- Multi-product comparison
+- Personalized recommendations
+- RAG-based large catalog retrieval
+- AI shopping agents
+
+---
+
+# 📸 Features
+
+- Multi-vendor ecommerce platform
+- Product management
+- Vendor dashboard
+- AI shopping assistant
+- Review-aware recommendations
+- Conversational shopping experience
+
+---
+
+# ⚡ Example Questions
+
+```text
+What is the best review for this product?
+Is this product durable?
+Summarize negative reviews.
+Is this good value for money?
+```
+
+---
+
+# 📚 Base Project
+
+This project extends the open-source GoCart platform:
+
+https://github.com/GreatStackDev/gocart
+
+---
+
+# 🧪 Running the Project
+
+## Frontend
 
 ```bash
 npm install
+npm run dev
 ```
 
-Then, run the development server:
+## Backend
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pip install -r requirements.txt
+uvicorn main:app --reload
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/(public)/page.js`. The page auto-updates as you edit the file.
+# 🔑 Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Outfit](https://vercel.com/font), a new font family for Vercel.
+Create a `.env` file:
+
+```env
+MISTRAL_API_KEY=your_api_key
+```
 
 ---
 
-## 🤝 Contributing <a name="-contributing"></a>
+# 🎯 Project Goal
 
-We welcome contributions! Please see our [CONTRIBUTING.md](./CONTRIBUTING.md) for more details on how to get started.
+The goal of NexCart AI is to explore how conversational AI can improve ecommerce product discovery and purchasing decisions through contextual, real-time shopping assistance.
 
 ---
 
-## 📜 License <a name="-license"></a>
+# 📄 License
 
-This project is licensed under the MIT License. See the [LICENSE.md](./LICENSE.md) file for details.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project follows the original GoCart license.
