@@ -4,6 +4,19 @@ NexCart AI is an AI-enhanced multi-vendor e-commerce platform built by extending
 
 The project integrates an intelligent AI shopping assistant directly into product pages, allowing users to ask contextual questions about products, reviews, ratings, and recommendations in natural language.
 
+---
+
+# 🎥 Demo Video
+
+<p align="center">
+  <video src="./assets/chat_demo.mp4" controls width="100%"></video>
+</p>
+
+> If the video does not render on GitHub, open it directly from `/doc/chat_demo.mp4`
+
+---
+
+
 ## 🔥 What I Built
 
 I forked the original GoCart project and implemented:
