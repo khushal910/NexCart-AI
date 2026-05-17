@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+from ai_response import generate_response
 
 app = FastAPI()
 app.add_middleware(
@@ -13,17 +14,19 @@ app.add_middleware(
 # Request body model
 class ChatRequest(BaseModel):
     message: str
-
+    product: object
 
 @app.get("/")
 def home():
     return {"message": "FastAPI backend running successfully!"}
 
 
-@app.post("/chat")
+@app.post("/chat")  
 def chat(data: ChatRequest):
 
     user_message = data.message
-
-    # Temporary AI response
-    return {"reply": f"You said: {user_message}"}
+    product_data = data.product
+    
+    ai_response = generate_response(user_message, product_data)
+    
+    return {"reply": ai_response}
