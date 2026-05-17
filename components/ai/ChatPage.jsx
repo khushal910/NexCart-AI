@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
+
 
 const ChatPage = ({ product, onClose }) => {
   const [sendMessage, setSendMessage] = useState("");
@@ -179,7 +181,7 @@ const ChatPage = ({ product, onClose }) => {
                   }
                 `}
               >
-                {msg.message}
+                 <ReactMarkdown>{msg.message}</ReactMarkdown>
               </div>
             </div>
           ))}
