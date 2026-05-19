@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from ai_response import generate_response
+from model.ai_model import ai_model
 
 app = FastAPI()
 app.add_middleware(
@@ -27,6 +27,6 @@ def chat(data: ChatRequest):
     user_message = data.message
     product_data = data.product
     
-    ai_response = generate_response(user_message, product_data)
+    ai_response = ai_model(user_message, product_data)
     
     return {"reply": ai_response}
